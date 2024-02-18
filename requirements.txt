@@ -1,4 +1,5 @@
-Pandas
-Streamlit
-plotly.express
+pandas
+scipy
+streamlit
 altair
+plotly

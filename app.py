@@ -24,4 +24,4 @@ st.plotly_chart(fig_scatter)
 # At least one checkbox to change the behavior
 show_details = st.checkbox("Show details")
 if show_details:
-    st.write("Additional details can be displayed here.")
+    st.write("Not all expensive cars have to be new")

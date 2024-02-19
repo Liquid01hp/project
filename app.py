@@ -15,7 +15,12 @@ hist_column = st.selectbox("fuel", df.columns)
 fig_hist = px.histogram(df, x=hist_column, title=f'Histogram of {hist_column}')
 st.plotly_chart(fig_hist)
 
+#Default values for x and y axes in scatter plot
+default_x = 'odometer'
+default_y = 'price'
+
 # At least one Plotly Express scatter plot
+
 scatter_x = st.selectbox("odometer", df.columns)
 scatter_y = st.selectbox("price", df.columns)
 fig_scatter = px.scatter(df, x=scatter_x, y=scatter_y, title='Odometer and Price correlation')

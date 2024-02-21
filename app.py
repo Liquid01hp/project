@@ -7,8 +7,15 @@ csv_file_path = 'vehicles_us.csv'
 # Read the dataset
 df = pd.read_csv(csv_file_path)
 
+#Prints out the number of duplicates
+(df.duplicated().sum())
+df = df.drop_duplicates()
+
 # At least one st.header with text
-st.header("First Project")
+st.header("Vehicles Information")
+st.subheader("The following information will give you a better understanding about the cars,"
+"from Gas to Electric, how the lower the odometer often means cheapers price and how some cars"
+"will still be high price due to them being classes or hidden gems.")
 
 # At least one Plotly Express histogram
 hist_column = st.selectbox("fuel", df.columns)
@@ -20,7 +27,6 @@ default_x = 'odometer'
 default_y = 'price'
 
 # At least one Plotly Express scatter plot
-
 scatter_x = st.selectbox("odometer", df.columns)
 scatter_y = st.selectbox("price", df.columns)
 fig_scatter = px.scatter(df, x=scatter_x, y=scatter_y, title='Odometer and Price correlation')

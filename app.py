@@ -13,8 +13,8 @@ df = df.drop_duplicates()
 
 # At least one st.header with text
 st.header("Vehicles Information")
-st.subheader("The following information will give you a better understanding about the cars,"
-"from Gas to Electric, how the lower the odometer often means cheapers price and how some cars"
+st.subheader("The following information will give you a better understanding about the cars, "
+"from Gas to Electric, how the lower the odometer often means cheapers price and how some cars "
 "will still be high price due to them being classes or hidden gems.")
 
 # At least one Plotly Express histogram
@@ -32,8 +32,8 @@ default_x = 'odometer'
 default_y = 'price'
 
 # At least one Plotly Express scatter plot
-scatter_x = st.selectbox("odometer", df.columns)
-scatter_y = st.selectbox("price", df.columns)
+scatter_x = st.selectbox("odometer", df.columns, index = 6)
+scatter_y = st.selectbox("price", df.columns, index = 0)
 fig_scatter = px.scatter(df, x=scatter_x, y=scatter_y, title='Odometer and Price correlation')
 st.plotly_chart(fig_scatter)
 

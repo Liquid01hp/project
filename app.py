@@ -13,6 +13,9 @@ st.subheader("The following information will give you a better understanding abo
 "from Gas to Electric, how the lower the odometer often means cheapers price and how some cars "
 "will still be high price due to them being classes or hidden gems.")
 
+#Delete _ for the column names 
+df.columns = df.columns.str.replace('_', '')
+
 # At least one Plotly Express histogram
 hist_column = st.selectbox("fuel", df.columns, index = 5)
 #add white title for y axis

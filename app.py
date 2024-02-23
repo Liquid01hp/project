@@ -45,7 +45,6 @@ default_y = 'Y Section'
 scatter_x = st.selectbox("X Section", df.columns, index = 6)
 scatter_y = st.selectbox("Y Section", df.columns, index = 0)
 fig_scatter = px.scatter(df, x=scatter_x, y=scatter_y, title='Odometer and Price correlation')
-st.plotly_chart(fig_scatter)
 # At least one checkbox to change the behavior
 show_details = st.checkbox("Show details")
 if show_details:

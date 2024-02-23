@@ -24,11 +24,10 @@ hist_column = st.selectbox("X Section", df.columns, index = 4)
 model_year = df.groupby('model year').cylinders.median()
 model = df.groupby('model').cylinders.median()
 
-#Create histogram
-fig_hist = px.histogram(df, y= model_year, title='Different types of fuel')
-fig_hist = px.histogram(df, x= model, title='Cylinders and Year')
-fig_hist.update_xaxes(title_text='Average # of Cylinders Per Model Year')
-fig_hist.update_yaxes(title_text='Number of Models')
+# Create histogram
+fig_hist = px.histogram(df, x=model_year.index, y=model_year.values, title='Cylinders and Year')
+fig_hist.update_xaxes(title_text='Model Year')
+fig_hist.update_yaxes(title_text='Average # of Cylinders Per Model Year')
 fig_hist.show()
 
 fig_hist = px.histogram(df, x=hist_column, title=f'Histogram of {hist_column}')

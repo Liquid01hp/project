@@ -24,7 +24,7 @@ hist_column = st.selectbox("X Section", df.columns, index = 4)
 model_year = df.groupby('model year').cylinders.median()
 model = df.groupby('model').cylinders.median()
 
-#Creat histogram
+#Create histogram
 fig_hist = px.histogram(df, y= model_year, title='Different types of fuel')
 fig_hist = px.histogram(df, x= model, title='Cylinders and Year')
 fig_hist.update_xaxes(title_text='Average # of Cylinders Per Model Year')
@@ -63,4 +63,4 @@ else:
 st.markdown("The expected trend of odometer and price seems to be accurate, the price of the vehicle declines as the odometer level increases, for exception of some cars which could be classic cars or electric cars that often aren't affect by the amount of miles.")
 
 # Conclusion
-st.markdown("Something about if we make the classic cars go away, the scatterplot changes")
+st.markdown("Some cars are expensive due to time, others due to miles but the average car seems to be at a fair price")

@@ -11,31 +11,29 @@ df = pd.read_csv(csv_file_path)
 st.header("Vehicles Information")
 
 # Introduction
-st.subheader("The following information will give you a better understanding about the cars, "
-"from Gas to Electric, how the lower the odometer often means cheapers price and how some cars "
-"will still be high price due to them being classes or hidden gems.")
+st.markdown("A lot is needed to be learn when it comes to cars, from model, model year, number of cylinders and so on. The following will showcase the average number of cylinders in our collection and how often the price of a car is affect by the odometer. ")
 
 # Delete _ for the column names 
 df.columns = df.columns.str.replace('_', ' ')
 df.columns = df.columns.str.replace('is4wd', '4 wd')
 
 # At least one Plotly Express histogram
-hist_column = st.selectbox("fuel", df.columns, index = 5)
+hist_column = st.selectbox("Vehicles", df.columns, index = 5)
 # Add white title for y axis
 
 fig_hist = px.histogram(df, x=hist_column, title=f'Histogram of {hist_column}')
 st.plotly_chart(fig_hist)
 
 # Description of histogram
-st.markdown("Most vehicles are gas with around 47,000 and counting making that 91% of the overal number of vehicles, followed by Diesel with about 3,700 that being 7.1%, leaving electric as the lowest % out of all the cars being 0.01 due to electric cars only being 6 of them in total.")
+st.markdown("Throughout the years, cars have update in many ways, one of them is the amount of cylinders a car has. They started with 4 and the highest until now its 10, althought majority of cars now a days have either 6 or 8 making that the most common ones.")
 
 # Default values for x and y axes in scatter plot
-default_x = 'Odometer'
-default_y = 'Price'
+default_x = 'X Section'
+default_y = 'Y Section'
 
 # At least one Plotly Express scatter plot
-scatter_x = st.selectbox("odometer", df.columns, index = 6)
-scatter_y = st.selectbox("price", df.columns, index = 0)
+scatter_x = st.selectbox("X Section", df.columns, index = 6)
+scatter_y = st.selectbox("Y Section", df.columns, index = 0)
 fig_scatter = px.scatter(df, x=scatter_x, y=scatter_y, title='Odometer and Price correlation')
 st.plotly_chart(fig_scatter)
 
@@ -45,9 +43,15 @@ st.markdown("The expected trend of odometer and price seems to be accurate, the 
 # At least one checkbox to change the behavior
 show_details = st.checkbox("Show details")
 if show_details:
-    high_value_items = df[df['price'] > 100000]
-    st.write("Classics vehicles that break bounderies")
-    st.write(high_value_items)
+    # Filter the DataFrame based on the conditions
+    filtered_df = df[(df['Odometer'] < 300000) & (df['Price'] < 60000)]
+
+    # Create the scatterplot with the filtered data
+    fig_scatter_filtered = px.scatter(filtered_df, x=scatter_x, y=scatter_y, title='Filtered Odometer and Price correlation')
+    st.plotly_chart(fig_scatter_filtered)
+else:
+    fig_scatter = px.scatter(df, x=scatter_x, y=scatter_y, title='Odometer and Price correlation')
+    st.plotly_chart(fig_scatter)
 
 # Conclusion
-st.markdown("Althought, most cars are expected to be at a certain price, labels don't stop old cars to be worth a lot. After been used for years, still in good condition old cars are worth every penny.")
+st.markdown("Something about if we make the classic cars go away, the scatterplot changes")

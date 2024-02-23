@@ -18,7 +18,7 @@ df.columns = df.columns.str.replace('_', ' ')
 df.columns = df.columns.str.replace('is4wd', '4 wd')
 
 # At least one Plotly Express histogram
-hist_column = st.selectbox("Vehicles", df.columns, index = 5)
+hist_column = st.selectbox("Average # of Cylinders Per Model Year", df.columns, index = 4)
 # Add white title for y axis
 
 fig_hist = px.histogram(df, x=hist_column, title=f'Histogram of {hist_column}')
@@ -36,10 +36,6 @@ scatter_x = st.selectbox("X Section", df.columns, index = 6)
 scatter_y = st.selectbox("Y Section", df.columns, index = 0)
 fig_scatter = px.scatter(df, x=scatter_x, y=scatter_y, title='Odometer and Price correlation')
 st.plotly_chart(fig_scatter)
-
-#Description of scatterplot
-st.markdown("The expected trend of odometer and price seems to be accurate, the price of the vehicle declines as the odometer level increases, for exception of some cars which could be classic cars or electric cars that often aren't affect by the amount of miles.")
-
 # At least one checkbox to change the behavior
 show_details = st.checkbox("Show details")
 if show_details:
@@ -52,6 +48,9 @@ if show_details:
 else:
     fig_scatter = px.scatter(df, x=scatter_x, y=scatter_y, title='Odometer and Price correlation')
     st.plotly_chart(fig_scatter)
+
+#Description of scatterplot
+st.markdown("The expected trend of odometer and price seems to be accurate, the price of the vehicle declines as the odometer level increases, for exception of some cars which could be classic cars or electric cars that often aren't affect by the amount of miles.")
 
 # Conclusion
 st.markdown("Something about if we make the classic cars go away, the scatterplot changes")

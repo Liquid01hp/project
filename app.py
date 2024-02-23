@@ -18,8 +18,18 @@ df.columns = df.columns.str.replace('_', ' ')
 df.columns = df.columns.str.replace('is4wd', '4 wd')
 
 # At least one Plotly Express histogram
-hist_column = st.selectbox("Average # of Cylinders Per Model Year", df.columns, index = 4)
-# Add white title for y axis
+hist_column = st.selectbox("X Section", df.columns, index = 4)
+
+#Find the mediam for model_year
+model_year = df.groupby('model year').cylinders.median()
+model = df.groupby('model').cylinders.median()
+
+#Creat histogram
+fig_hist = px.histogram(df, y= model_year, title='Different types of fuel')
+fig_hist = px.histogram(df, x= model, title='Cylinders and Year')
+fig_hist.update_xaxes(title_text='Average # of Cylinders Per Model Year')
+fig_hist.update_yaxes(title_text='Number of Models')
+fig_hist.show()
 
 fig_hist = px.histogram(df, x=hist_column, title=f'Histogram of {hist_column}')
 st.plotly_chart(fig_hist)

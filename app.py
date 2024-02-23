@@ -45,7 +45,7 @@ st.markdown("The expected trend of odometer and price seems to be accurate, the 
 # At least one checkbox to change the behavior
 show_details = st.checkbox("Show details")
 if show_details:
-    high_value_items = df[df['Price'] > 100000]
+    high_value_items = df[df['price'] > 100000]
     st.write("Classics vehicles that break bounderies")
     st.write(high_value_items)
 

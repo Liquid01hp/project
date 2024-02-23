@@ -44,7 +44,7 @@ st.markdown("The expected trend of odometer and price seems to be accurate, the 
 show_details = st.checkbox("Show details")
 if show_details:
     # Filter the DataFrame based on the conditions
-    filtered_df = df[(df['Odometer'] < 300000) & (df['Price'] < 60000)]
+    filtered_df = df[(df['odometer'] < 300000) & (df['price'] < 60000)]
 
     # Create the scatterplot with the filtered data
     fig_scatter_filtered = px.scatter(filtered_df, x=scatter_x, y=scatter_y, title='Filtered Odometer and Price correlation')

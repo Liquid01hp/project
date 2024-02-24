@@ -25,16 +25,13 @@ model_year = df.groupby('model year').cylinders.median()
 model = df.groupby('model').cylinders.median()
 
 # Create a histogram
+fig_hist = px.histogram(df, x=hist_column, title=f'Histogram of {hist_column}')
 fig_hist = px.histogram(df, y= model_year, )
 fig_hist = px.histogram(df, x= model,)
 fig_hist.update_xaxes(title_text='Average # of Cylinders Per Model Year')
 fig_hist.update_yaxes(title_text='test_title')
-#print (fig_hist)
-#fig_hist.show()
-st.write(fig_hist)
-fig_hist = px.histogram(df, x=hist_column, title=f'Histogram of {hist_column}')
-st.write(fig_hist)
 st.plotly_chart(fig_hist)
+st.write(fig_hist)
 
 # Description of histogram
 st.markdown("Throughout the years, cars have update in many ways, one of them is the amount of cylinders a car has. They started with 3 and the highest until now its 12, althought majority of cars now a days have either 4, 6 or 8 making that the most common ones.")

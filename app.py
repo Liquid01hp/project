@@ -24,12 +24,13 @@ hist_column = st.selectbox("X Section", df.columns, index = 4)
 model_year = df.groupby('model year').cylinders.median()
 model = df.groupby('model').cylinders.median()
 
-# Create histogram
-fig_hist = px.histogram(df, x=model_year.index, y=model_year.values, title='Cylinders and Year')
-fig_hist.update_xaxes(title_text='Model Year')
-fig_hist.update_yaxes(title_text='Average # of Cylinders Per Model Year')
+# Create a histogram
+fig_hist = px.histogram(df, y= model_year, )
+fig_hist = px.histogram(df, x= model,)
+fig_hist.update_xaxes(title_text='Average # of Cylinders Per Model Year')
+fig_hist.update_yaxes(title_text='Number of Models')
+st.line_chart(data = df, x = 'cylinders', y = 'Number of Models')
 fig_hist.show()
-
 fig_hist = px.histogram(df, x=hist_column, title=f'Histogram of {hist_column}')
 st.plotly_chart(fig_hist)
 
@@ -61,4 +62,4 @@ else:
 st.markdown("The expected trend of odometer and price seems to be accurate, the price of the vehicle declines as the odometer level increases, for exception of some cars which could be classic cars or electric cars that often aren't affect by the amount of miles.")
 
 # Conclusion
-st.markdown("Some cars are expensive due to time, others due to miles but the average car seems to be at a fair price")
+st.markdown("Some cars are expensive due to time, others due to miles but the average car seems to be at a fair price.")

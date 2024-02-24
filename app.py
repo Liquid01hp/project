@@ -1,11 +1,15 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-
+from collections import Counter
 csv_file_path = 'vehicles_us.csv'
 
 # Read the dataset
 df = pd.read_csv(csv_file_path)
+
+# Empty spaces
+df = df.dropna()
+df = df.fillna(0)
 
 # Header
 st.header("Vehicles Information")
@@ -22,16 +26,19 @@ hist_column = st.selectbox("X Section", df.columns, index = 4)
 
 #Find the mediam for model_year
 model_year = df.groupby('model year').cylinders.median()
-model = df.groupby('model').cylinders.median()
+median_list = model_year.values.tolist()
+median_count = Counter(median_list)
+unique_median = list(median_count.keys())
+frequencies = list(median_count.values())
+print (unique_median)
+print (frequencies)
 
 # Create a histogram
-#fig_hist = px.histogram(df, x=hist_column, title=f'Histogram of {hist_column}')
-#fig_hist = px.histogram(df, y= model_year, )
-fig_hist = px.histogram (df, x= model, y = model_year, title=f'Histogram of {hist_column}') 
-fig_hist.update_xaxes(title_text='Average # of Cylinders Per Model Year')
-fig_hist.update_yaxes(title_text='test_title')
+fig_hist = px.histogram(df, x= unique_median, y = frequencies, title = 'Histogram of Model') 
+fig_hist.update_xaxes(title_text='Median # of Cylinders Per Model Year')
+fig_hist.update_yaxes(title_text='Frequency of unique medians')
 st.plotly_chart(fig_hist)
-st.write(fig_hist)
+
 
 # Description of histogram
 st.markdown("Throughout the years, cars have update in many ways, one of them is the amount of cylinders a car has. They started with 3 and the highest until now its 12, althought majority of cars now a days have either 4, 6 or 8 making that the most common ones.")

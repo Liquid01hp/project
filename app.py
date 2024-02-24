@@ -31,7 +31,7 @@ fig_hist.update_xaxes(title_text='Average # of Cylinders Per Model Year')
 fig_hist.update_yaxes(title_text='test_title')
 fig_hist.show()
 fig_hist = px.histogram(df, x=hist_column, title=f'Histogram of {hist_column}')
-st.plotly_chart(fig_hist)
+#st.plotly_chart(fig_hist)
 
 # Description of histogram
 st.markdown("Throughout the years, cars have update in many ways, one of them is the amount of cylinders a car has. They started with 3 and the highest until now its 12, althought majority of cars now a days have either 4, 6 or 8 making that the most common ones.")

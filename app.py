@@ -31,7 +31,9 @@ fig_hist.update_xaxes(title_text='Average # of Cylinders Per Model Year')
 fig_hist.update_yaxes(title_text='test_title')
 #print (fig_hist)
 #fig_hist.show()
+st.write(fig_hist)
 fig_hist = px.histogram(df, x=hist_column, title=f'Histogram of {hist_column}')
+st.write(fig_hist)
 st.plotly_chart(fig_hist)
 
 # Description of histogram

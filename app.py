@@ -34,11 +34,11 @@ print (unique_median)
 print (frequencies)
 
 # Create a histogram
-fig_hist = px.histogram(df, x= unique_median, y = frequencies, title = 'Histogram of Model') 
-fig_hist.update_xaxes(title_text='Median # of Cylinders Per Model Year')
-fig_hist.update_yaxes(title_text='Frequency of unique medians')
+fig_hist = px.bar(df, x= unique_median, y = frequencies, title = 'Histogram of Model') 
+fig_hist.update_xaxes(title_text='Median # of Cylinders Per Year')
+fig_hist.update_yaxes(title_text='Frequency of Unique Median Values')
 st.plotly_chart(fig_hist)
-
+fig_hist.show()
 
 # Description of histogram
 st.markdown("Throughout the years, cars have update in many ways, one of them is the amount of cylinders a car has. They started with 3 and the highest until now its 12, althought majority of cars now a days have either 4, 6 or 8 making that the most common ones.")

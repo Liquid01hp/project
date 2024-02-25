@@ -60,12 +60,13 @@ if show_details:
     # Create the scatterplot with the filtered data
     fig_scatter_filtered = px.scatter(filtered_df, x=scatter_x, y=scatter_y, title='Filtered Odometer and Price correlation')
     st.plotly_chart(fig_scatter_filtered)
+    st.write("After removing the classic cars and hidden gems, we can see more clearly what the average price and number of miles on each car")
 else:
     fig_scatter = px.scatter(df, x=scatter_x, y=scatter_y, title='Odometer and Price correlation')
     st.plotly_chart(fig_scatter)
-
+    
 #Description of scatterplot
 st.markdown("The expected trend of odometer and price seems to be accurate, the price of the vehicle declines as the odometer level increases, for exception of some cars which could be classic cars or electric cars that often aren't affect by the amount of miles.")
 
 # Conclusion
-st.markdown("Some cars are expensive due to time, others due to miles but the average car seems to be at a fair price.")
+st.markdown("Some cars are expensive due to time, others due to miles but the average car seems to be at a fair price. After ")

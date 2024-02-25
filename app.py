@@ -69,4 +69,4 @@ else:
 st.markdown("The expected trend of odometer and price seems to be accurate, the price of the vehicle declines as the odometer level increases, for exception of some cars which could be classic cars or electric cars that often aren't affect by the amount of miles.")
 
 # Conclusion
-st.markdown("Some cars are expensive due to time, others due to miles but the average car seems to be at a fair price. After ")
+st.markdown("Some cars are expensive due to time, others due to miles but the average car seems to be at a fair price. After looking at the detail table, we were able to see how their price slowly declines at a decent rate.")

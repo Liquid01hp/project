@@ -7,9 +7,6 @@ csv_file_path = 'vehicles_us.csv'
 # Read the dataset
 df = pd.read_csv(csv_file_path)
 
-# Empty spaces
-df = df.dropna()
-
 # Header
 st.header("Vehicles Information")
 
